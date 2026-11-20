@@ -14,7 +14,8 @@ Cart → `POST /api/checkout` (prices rebuilt server-side from `data/products.js
 | New-drop email blast | Vercel cron Thu → `/api/cron/drop-broadcast` | No |
 | Weekly P&L + verdict to Tony | Vercel cron Mon → `/api/cron/weekly-report` | No |
 | New designs | Weekly scheduled AI run → PR labeled `design-drop` (see `docs/DESIGN_FACTORY.md`) | **Yes: merge = publish** |
-| Command Center | `/admin` (basic auth) + `/api/metrics` (bearer) for DJINN | Read only |
+| Customer accounts | Supabase magic-link auth, `profiles` table (RLS: own row only; `role` not client-writable). `/account` = profile + orders | No |
+| Command Center | `/admin` (Supabase login, `profiles.role = 'admin'`; owner emails in `private.admin_emails`) + `/api/metrics` (bearer) for DJINN | Read only |
 
 ## Rules for any AI working here
 - Read `docs/DESIGN_FACTORY.md` before touching designs; its content guardrails are mandatory.

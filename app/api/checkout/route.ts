@@ -1,6 +1,7 @@
 import {NextResponse} from 'next/server';
 import {getProduct, isSize, unitPrice, siteUrl, SHIPPING} from '../../../lib/products';
 import {stripe, stripeConfigured, encodeCart} from '../../../lib/stripe';
+import {currentUser} from '../../../lib/supabase/server';
 
 export const runtime = 'nodejs';
 
@@ -33,6 +34,8 @@ export async function POST(req: Request) {
   if (!lineItems.length) return NextResponse.json({error: 'empty_cart'}, {status: 400});
 
   const freeShip = subtotal >= SHIPPING.freeOverCents;
+  // Signed-in customers get their email prefilled and the order linked to their account.
+  const {user} = await currentUser().catch(() => ({user: null}));
   const session = await stripe().checkout.sessions.create({
     mode: 'payment',
     line_items: lineItems,
@@ -49,7 +52,8 @@ export async function POST(req: Request) {
     // Lets the webhook email an abandoned-cart recovery link when the session expires.
     after_expiration: {recovery: {enabled: true, allow_promotion_codes: true}},
     consent_collection: {promotions: 'auto'},
-    metadata: {cart: encodeCart(lines), brand: 'ts-hurt'},
+    ...(user?.email ? {customer_email: user.email} : {}),
+    metadata: {cart: encodeCart(lines), brand: 'ts-hurt', ...(user ? {user_id: user.id} : {})},
     payment_intent_data: {metadata: {cart: encodeCart(lines), brand: 'ts-hurt'}},
     success_url: `${siteUrl()}/success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${siteUrl()}/#inventory`,

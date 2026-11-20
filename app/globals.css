@@ -47,3 +47,19 @@ footer a{text-decoration:underline}
 .admin table{width:100%;border-collapse:collapse;font-size:14px}.admin td,.admin th{padding:9px 6px;border-bottom:1px solid #2c2925;text-align:left}.admin th{font:700 10px monospace;color:var(--muted)}
 .admin .muted,.admin section p{color:var(--muted)}.admin a{color:var(--ivory);text-decoration:underline}.checks{list-style:none;padding:0;font:700 13px monospace;line-height:2}.checks .ok{color:#5fd38a}.checks .bad{color:#e44d41}
 @media(max-width:900px){.caseGrid,.capture,.adminGrid{grid-template-columns:1fr}.caseGrid .modalPreview{min-height:340px}.kpis{grid-template-columns:repeat(2,1fr)}}
+
+/* --- Accounts --- */
+.headerActions{display:flex;gap:10px;align-items:center}
+.profileMenu{position:relative}
+.profileBtn{display:inline-block;min-width:70px;background:none;color:var(--ivory);border:1px solid #746a61;padding:13px;font:800 12px monospace;letter-spacing:1px;text-align:center}
+.profileBtn:hover{border-color:var(--red)}
+.profileDrop{position:absolute;right:0;top:calc(100% + 6px);background:#181715;border:1px solid #66564e;min-width:240px;display:flex;flex-direction:column;z-index:20;box-shadow:0 12px 30px #000}
+.profileDrop a,.profileDrop button{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid #2c2925;color:var(--ivory);padding:14px 16px;font:800 11px monospace;letter-spacing:1px}
+.profileDrop a:hover,.profileDrop button:hover{background:#231f1c;color:#e44d41}
+.profileDrop .adminLink{color:#5fd38a}
+.profileForm{display:grid;gap:12px}.profileForm label{display:grid;gap:5px;font:700 10px monospace;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+.profileForm input,.profileForm select{background:#0b0b0b;border:1px solid #504a44;color:var(--ivory);padding:12px;font:14px Arial}
+.profileForm input:disabled{opacity:.6}.profileForm .check{display:flex;gap:10px;align-items:center;text-transform:none;font-size:13px;color:var(--ivory)}
+.profileForm .action{margin-top:6px}
+.account .status a{color:#5fd38a}
+@media(max-width:600px){.profileBtn{padding:10px;font-size:10px;min-width:0}}
