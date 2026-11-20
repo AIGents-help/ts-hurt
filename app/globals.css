@@ -10,3 +10,14 @@
 .press{position:relative;min-height:350px}
 .press:has(.officialPress:not([style*="display: none"])) {font-size:0}
 .press:has(.officialPress:not([style*="display: none"]))>span,.press:has(.officialPress:not([style*="display: none"]))>small{opacity:0}
+
+/* Brand artwork is sourced from the approved TS-HURT original logos.
+   These small WebP previews are for web display only, never POD production. */
+.headerBrandLogo{display:block;width:155px;height:52px;object-fit:contain}
+.siteHeader .wordmark{display:flex;flex-direction:column;align-items:flex-start}
+.heroMark .officialHeroLogo{max-width:440px;max-height:295px;margin:0 auto}
+.stamp{position:relative;max-width:350px;width:100%;margin-inline:auto}
+.stamp .officialBadge{display:block}
+.press{position:relative;min-height:280px}
+.press .officialPress{display:block}
+@media(max-width:700px){.headerBrandLogo{width:116px;height:44px}.heroMark .officialHeroLogo{max-width:100%}.stamp{max-width:270px}.press{min-height:240px}}
