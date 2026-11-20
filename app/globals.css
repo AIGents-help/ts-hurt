@@ -21,3 +21,29 @@
 .press{position:relative;min-height:280px}
 .press .officialPress{display:block}
 @media(max-width:700px){.headerBrandLogo{width:116px;height:44px}.heroMark .officialHeroLogo{max-width:100%}.stamp{max-width:270px}.press{min-height:240px}}
+
+/* --- Commerce + Command Center additions --- */
+.shirt .printArtwork{width:100%;height:auto;object-fit:contain}
+.productLine h3 a:hover,.inspect:hover{color:var(--red)}
+a.inspect{display:inline-block;margin-top:14px}
+.shipNote{font:800 11px monospace;letter-spacing:1px;color:#e44d41;margin:0 0 12px}
+.casefile{padding:40px 5% 0}.caseGrid{display:grid;grid-template-columns:1fr 1fr;gap:40px;border:1px solid #38332f;background:#1b1a18}
+.caseGrid h1{font-size:clamp(34px,4vw,58px);letter-spacing:-2px;line-height:.95;margin:10px 0}
+.caseGrid .modalPreview{height:auto;min-height:520px;justify-content:center}.caseGrid .shirt{width:70%;height:auto;aspect-ratio:1/1.05}
+.facts{color:#beb8ad;font-size:14px;line-height:1.9;padding-left:18px;margin-top:24px}
+.capture{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:80px 8%;background:#171615;border-top:1px solid #45403a}
+.capture h2,.popup h2{font-size:clamp(36px,4vw,64px);letter-spacing:-2px;line-height:.92;margin:12px 0}.capture h2 span,.popup h2 span{color:var(--red)}
+.captureForm{display:flex;flex-direction:column;gap:10px}.captureForm input{background:#0b0b0b;border:1px solid #66564e;color:var(--ivory);padding:18px;font:700 12px monospace;letter-spacing:1px}
+.captureForm input:focus{outline:2px solid var(--red)}.captureForm .action{margin-top:0}.captureForm small{color:#e44d41}.hp{position:absolute;left:-9999px;opacity:0;height:0}
+.captureDone{font:800 13px monospace;letter-spacing:1px;border:1px dashed var(--red);padding:18px}.captureDone b{color:var(--red)}
+.popup{background:#1b1a18;border:1px solid #66564e;outline:4px solid #781e1b;outline-offset:6px;width:min(92%,520px);padding:44px 34px;position:relative}
+.policies{max-width:780px;margin:auto;padding:70px 6%;line-height:1.7;color:#beb8ad}.policies h1{color:var(--ivory);font-size:clamp(34px,4vw,56px);letter-spacing:-2px;line-height:1}.policies h2{color:var(--ivory);margin-top:34px}.policies a{color:var(--red)}
+footer a{text-decoration:underline}
+.admin{padding:50px 5%;max-width:1300px;margin:auto}.admin h1{font-size:clamp(36px,5vw,70px);letter-spacing:-3px;margin:8px 0}.admin h1 span{color:var(--red)}
+.admin .status{font:800 12px monospace;letter-spacing:1px;padding:12px 14px;border:1px solid}.status.ok{color:#5fd38a;border-color:#2f6b45}.status.warn{color:#f0b34a;border-color:#7a5a20}
+.adminTabs{display:flex;gap:8px;margin:22px 0}.adminTabs a{border:1px solid #504a44;padding:9px 14px;font:800 11px monospace}.adminTabs a.active{background:var(--red);border-color:var(--red)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px}.kpi{background:#161616;border:1px solid #38332f;padding:18px}.kpi small{display:block;font:700 10px monospace;letter-spacing:1px;color:var(--muted);text-transform:uppercase}.kpi b{font-size:28px}
+.adminGrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.admin section{background:#161616;border:1px solid #38332f;padding:20px;margin-bottom:20px}.admin h2{font:800 13px monospace;letter-spacing:2px;text-transform:uppercase;color:#e44d41;margin-top:0}
+.admin table{width:100%;border-collapse:collapse;font-size:14px}.admin td,.admin th{padding:9px 6px;border-bottom:1px solid #2c2925;text-align:left}.admin th{font:700 10px monospace;color:var(--muted)}
+.admin .muted,.admin section p{color:var(--muted)}.admin a{color:var(--ivory);text-decoration:underline}.checks{list-style:none;padding:0;font:700 13px monospace;line-height:2}.checks .ok{color:#5fd38a}.checks .bad{color:#e44d41}
+@media(max-width:900px){.caseGrid,.capture,.adminGrid{grid-template-columns:1fr}.caseGrid .modalPreview{min-height:340px}.kpis{grid-template-columns:repeat(2,1fr)}}
