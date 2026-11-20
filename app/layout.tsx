@@ -4,6 +4,7 @@ import Link from 'next/link';
 import {Analytics} from '@vercel/analytics/next';
 import {CartProvider, BagButton} from '../components/CartProvider';
 import {PopupCapture} from '../components/EmailCapture';
+import {ProfileMenu} from '../components/ProfileMenu';
 import {siteUrl} from '../lib/products';
 import './globals.css';
 
@@ -25,7 +26,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           <header className="siteHeader">
             <Link href="/" className="wordmark"><Image className="headerBrandLogo" src="/brand/ts-hurt-primary.png" alt="TS-HURT" width={1536} height={1024} priority sizes="155px" /><small>FEELINGS SOLD SEPARATELY</small></Link>
             <nav><Link href="/#inventory">THE INVENTORY</Link><Link href="/#operation">THE OPERATION</Link><Link href="/#manifesto">MANIFESTO</Link></nav>
-            <BagButton />
+            <div className="headerActions"><ProfileMenu /><BagButton /></div>
           </header>
           {children}
           <footer>

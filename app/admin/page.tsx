@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import {redirect} from 'next/navigation';
+import {currentUser} from '../../lib/supabase/server';
 import {getMetrics} from '../../lib/metrics';
 import {products} from '../../lib/products';
 
@@ -14,11 +16,14 @@ function readiness() {
     ['Stripe payments', has('STRIPE_SECRET_KEY')], ['Stripe webhook', has('STRIPE_WEBHOOK_SECRET')],
     ['Printful fulfillment', has('PRINTFUL_API_TOKEN')], ['Printful auto-confirm', process.env.PRINTFUL_AUTO_CONFIRM === 'true'],
     ['Email (Resend)', has('RESEND_API_KEY')], ['Email list', has('RESEND_AUDIENCE_ID')], ['Sale alerts to owner', has('OWNER_EMAIL')],
-    ['Metrics feed (DJINN)', has('METRICS_TOKEN')], ['Auto sales tax', process.env.STRIPE_AUTOMATIC_TAX === 'true'],
+    ['Customer accounts (Supabase)', has('NEXT_PUBLIC_SUPABASE_URL')], ['Metrics feed (DJINN)', has('METRICS_TOKEN')], ['Weekly crons', has('CRON_SECRET')], ['Auto sales tax', process.env.STRIPE_AUTOMATIC_TAX === 'true'],
   ] as const;
 }
 
 export default async function Admin({searchParams}: {searchParams: Promise<{days?: string}>}) {
+  const {user, profile} = await currentUser();
+  if (!user) redirect('/account/login?next=/admin');
+  if (profile?.role !== 'admin') redirect('/account');
   const days = Number((await searchParams).days) || 30;
   let m: Awaited<ReturnType<typeof getMetrics>> | {configured: false; error: string};
   try { m = await getMetrics(days); } catch (e) { m = {configured: false, error: e instanceof Error ? e.message : String(e)}; }
