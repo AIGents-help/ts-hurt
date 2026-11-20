@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [main]
   push:
-    branches: [feat/underground-storefront]
+    branches: [main]
 permissions:
   contents: read
 jobs:
@@ -19,7 +19,9 @@ jobs:
         with:
           node-version: '22'
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
+      - name: Catalog is fulfillable
+        run: node scripts/check-catalog.mjs
       - name: Typecheck
         run: npm run typecheck
       - name: Production build
